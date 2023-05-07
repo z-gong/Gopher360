@@ -176,7 +176,7 @@ void Gopher::loadConfigFile()
     speeds.push_back(0.005f);
     speeds.push_back(0.015f);
     speeds.push_back(0.025f);
-    speeds.push_back(0.004f);
+    speeds.push_back(0.04f);
     speed_names.push_back("ULTRALOW");
     speed_names.push_back("LOW");
     speed_names.push_back("MED");
@@ -626,7 +626,7 @@ void Gopher::setXboxClickState(DWORD STATE)
     _xboxClickStateLastIteration[STATE] = false;
   }
 
-  bool isDown = (_currentState.Gamepad.wButtons & STATE) == STATE;
+  bool isDown = STATE && (_currentState.Gamepad.wButtons & STATE) == STATE;
 
   // Detect if the button has been pressed.
   if (isDown && !_xboxClickStateLastIteration[STATE])
